@@ -158,16 +158,16 @@ function articleCreator(title, date, firstParagraph, secondParagraph, thirdParag
   paragraphOne.textContent = firstParagraph;
   paragraphTwo.textContent = secondParagraph;
   paragraphThree.textContent = thirdParagraph;
-  expandBtn.textContent = 'open';
+  expandBtn.textContent = '\u25bc';
 
   expandBtn.addEventListener('click', event => {
     articleDiv.classList.toggle('article-open');
-    if (expandBtn.textContent != 'open'){
-      expandBtn.textContent = 'open'
-    }else{
-      expandBtn.textContent = 'close'
-    }
-  })
+    if (expandBtn.textContent == '\u25bc'){
+    expandBtn.textContent = '\u25b2';
+  } else if (expandBtn.textContent == '\u25b2'){
+    expandBtn.textContent = '\u25bc';
+  }
+})
 
   //Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 

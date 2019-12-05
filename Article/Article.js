@@ -135,7 +135,7 @@ function articleCreator(title, date, firstParagraph, secondParagraph, thirdParag
   const titleHeader = document.createElement('h2');
   const paragraphOne = document.createElement('p');
   const paragraphTwo = document.createElement('p');
-  const paragraphThree = document.createElement('p')
+  const paragraphThree = document.createElement('p');
   const paragraphDate = document.createElement('p');
   const expandBtn = document.createElement('span');
 

@@ -30,6 +30,14 @@
   position: fixed;
   top: 0;
   z-index: 2;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+.header:hover {
+  background-color: darkred;
+  cursor: pointer;
 }
 .header h1 {
   margin: 0;
@@ -95,6 +103,7 @@
   border-bottom: none;
   z-index: 2;
   /* This set the layer level of the element, it has precendence over initial level of 1*/
+  transition: 2s;
 }
 .menu ul li {
   list-style-type: none;

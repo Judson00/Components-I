@@ -85,10 +85,27 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Robert Mitchell',
+    date: 'August 25th, 2000',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -112,3 +129,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const articleDiv = document.createElement('div');
+  const titleHeader = document.createElement('h2');
+  const paragraphOne = document.createElement('p');
+  const paragraphTwo = document.createElement('p');
+  const paragraphThree = document.createElement('p');
+  const paragraphDate = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  //set class names
+  articleDiv.classList.add('article');
+  paragraphDate.classList.add('paragraphDate');
+  expandBtn.classList.add('expandButton');
+
+  //append
+  articleDiv.appendChild(titleHeader);
+  articleDiv.appendChild(paragraphDate);
+  articleDiv.appendChild(paragraphOne);
+  articleDiv.appendChild(paragraphTwo);
+  articleDiv.appendChild(paragraphThree);
+  articleDiv.appendChild(expandBtn);
+
+  //set text content
+  titleHeader.textContent = title;
+  paragraphDate.textContent = date;
+  paragraphOne.textContent = firstParagraph;
+  paragraphTwo.textContent = secondParagraph;
+  paragraphThree.textContent = thirdParagraph;
+  expandBtn.textContent = '\u25bc';
+
+  expandBtn.addEventListener('click', event => {
+    articleDiv.classList.toggle('article-open');
+    if (expandBtn.textContent == '\u25bc'){
+    expandBtn.textContent = '\u25b2';
+  } else if (expandBtn.textContent == '\u25b2'){
+    expandBtn.textContent = '\u25bc';
+  }
+})
+
+  //Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+  return articleDiv;
+}
+
+const container = document.querySelector('body');
+data.forEach(item => {
+  container.appendChild(articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+})

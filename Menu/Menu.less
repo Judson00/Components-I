@@ -16,6 +16,7 @@
   border-left: none;
   border-bottom: none;
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
+  transition: 2s;
 }
 
 .menu ul li{
@@ -26,5 +27,14 @@
 }
 
 .menu--open {
+  background: darkred;
   display: block;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+.menu--open:hover{
+  background-color: darkgreen;
+  cursor: pointer;
 }
